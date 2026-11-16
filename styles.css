@@ -1,11 +1,424 @@
-/* Add your CSS to this file */
+/* =========================================================
+INFO2180 Project 1 - Healthy Lifestyle landing page
+Light theme is the default. Dark theme applies when
+<html data-theme="dark"> (set by scripts.js).
+   ========================================================= */
+
+/* ---------- Theme variables ---------- */
+:root {
+    --bg: #ffffff;
+    --text: #2d3748;
+    --header-bg: #ffffff;
+    --nav: #6b7280;
+    --nav-hover: #5A67D8;
+    --hero-bg: #E2E8F0;
+    --card-bg: #ffffff;
+    --card-border: #E2E8F0;
+    --card-shadow: rgba(0, 0, 0, 0.12);
+    --accent: #5A67D8;
+    --green: #48BB78;
+    --slate: #4A5568;
+    --input-bg: #ffffff;
+    --input-text: #2d3748;
+    --img-placeholder: #edf2f7;
+    --toggle-border: #cbd5e0;
+}
+
+:root[data-theme="dark"] {
+    --bg: #1a202c;
+    --text: #e2e8f0;
+    --header-bg: #171923;
+    --nav: #a0aec0;
+    --nav-hover: #a3bffa;
+    --hero-bg: #2d3748;
+    --card-bg: #2d3748;
+    --card-border: #4a5568;
+    --card-shadow: rgba(0, 0, 0, 0.5);
+    --accent: #a3bffa;
+    --slate: #2d3748;
+    --input-bg: #1a202c;
+    --input-text: #e2e8f0;
+    --img-placeholder: #4a5568;
+    --toggle-border: #4a5568;
+}
+
+/* ---------- Base ---------- */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3, p {
+    margin-top: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    background: var(--img-placeholder);
+}
+
+/* Centers content inside every full-width section */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ---------- Header ---------- */
+header {
+    background: var(--header-bg);
+    font-size: 18px;
+    padding: 1rem 0;
+    transition: background 0.25s ease;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+header h1 {
+    margin: 0 auto 0 0;           /* pushes nav + toggle to the right */
+    font-size: 18px;
+}
+
+header nav ul {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav a {
+    color: var(--nav);
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    color: var(--nav-hover);
+}
+
+/* Theme toggle (button is created by scripts.js) */
+.theme-toggle {
+    background: transparent;
+    color: var(--nav);
+    border: 1px solid var(--toggle-border);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    font-family: inherit;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    color: var(--nav-hover);
+    border-color: var(--nav-hover);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--nav-hover);
+    outline-offset: 2px;
+}
+
+/* ---------- Hero overview ---------- */
+.overview-hero {
+    background: var(--hero-bg);
+    padding: 3rem 0;
+    transition: background 0.25s ease;
+}
+
+.overview-hero .container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.overview-hero-image {
+    flex: 0 0 260px;
+}
+
+.overview-hero-image img {
+    width: 100%;
+    min-height: 180px;
+}
+
+.overview-hero-text {
+    flex: 1;
+}
+
+.overview-hero-text h2 {
+    font-size: 28px;
+    margin-bottom: 0.75rem;
+}
+
+.overview-hero-text p {
+    margin-bottom: 0;
+}
+
+/* ---------- Learn About ---------- */
+.learn-about {
+    padding: 3rem 0;
+}
+
+.learn-about h2 {
+    font-size: 24px;
+    color: var(--green);
+    margin-bottom: 1.5rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    box-shadow: 0 2px 6px var(--card-shadow);
+    overflow: hidden;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-body h3 {
+    font-size: 21px;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+}
+
+.card-body p {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+/* ---------- COVID-19 Testing Programme ---------- */
+.testing {
+    background: var(--slate);
+    color: white;
+    padding: 4rem 0;
+    transition: background 0.25s ease;
+}
+
+.testing .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.testing-desciption h2 {
+    font-size: 22px;
+    margin-bottom: 0.75rem;
+}
+
+.testing-desciption p {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.btn {
+    display: inline-block;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.testing .btn {
+    background: var(--green);
+    color: white;
+    border-radius: 5px;
+    padding: 0.75rem 2.5rem;
+    font-size: 15px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.testing .btn:hover {
+    background: #38a169;
+}
+
+/* ---------- Recent Stories ---------- */
+.stories {
+    padding: 3rem 0;
+}
+
+.stories h2 {
+    color: var(--accent);
+    font-size: 22px;
+    margin-bottom: 1.5rem;
+}
+
+.stories article {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stories article img {
+    flex: 0 0 150px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.article-body h3 {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+}
+
+.article-body p {
+    font-size: 16px;
+    margin-bottom: 0.5rem;
+}
+
+.article-body a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.article-body a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Newsletter ---------- */
+.newsletter {
+    background: var(--green);
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.newsletter h3 {
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+}
+
+.newsletter p {
+    max-width: 420px;
+    margin: 0 auto 1.5rem;
     font-size: 16px;
 }
 
-.container {
-    margin: 0 auto;
-    max-width: 960px;
-    width: 100%;
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.75rem;
+}
+
+.form-group {
+    display: flex;
+}
+
+.newsletter input {
+    width: 280px;
+    max-width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #E2E8F0;
+    background: var(--input-bg);
+    color: var(--input-text);
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.newsletter .btn {
+    background: #5A67D8;
+    color: white;
+    border: none;
+    padding: 0.7rem 2rem;
+    font-size: 16px;
+}
+
+.newsletter .btn:hover {
+    background: #4c58b8;
+}
+
+.message {
+    margin-top: 1rem;
+    min-height: 1.5rem;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background: var(--slate);
+    color: white;
+    padding: 1.5rem 0;
+    font-size: 14px;
+    transition: background 0.25s ease;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 800px) {
+    header .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        width: 100%;
+    }
+
+    header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .overview-hero .container,
+    .testing .container,
+    .stories article {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .overview-hero-image {
+        flex: none;
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter form {
+        flex-direction: column;
+        align-items: center;
+    }
 }
